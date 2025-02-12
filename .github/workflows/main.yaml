@@ -1,0 +1,17 @@
+name: GitHub Actions Demo
+run-name: Test Action upsun-cli
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install CLI (not needed )
+        uses: upsun/action-cli@master
+      - name: Run CLI Project info
+        uses: upsun/action-cli@master
+        with:
+          project_id: "${{ vars.PROJECT_ID }}"
+          cli_token: "${{ secrets.TOKEN_UPSUN }}"
+          environment_name: "master"
+          command: route:list
